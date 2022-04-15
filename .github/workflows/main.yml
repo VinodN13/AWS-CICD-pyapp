@@ -24,4 +24,4 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
         # Build App and Run Application Test
       - name: Build Application and Run unit Test
-        run: python app.py & pytest
+        run: python app.py test
