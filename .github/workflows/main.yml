@@ -8,6 +8,15 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
+      - name: Deploy to Server 
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}          
+          command: cp app.py .
+                                                                
       - name: Deploy to server
         uses: garygrossgarten/github-action-ssh@release
         with:
